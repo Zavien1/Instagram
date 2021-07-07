@@ -9,9 +9,12 @@
 #import "Parse/Parse.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "PostCell.h"
+#import "Post.h"
 
-@interface FeedViewController ()
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray* arrayOfPosts;
 
 @end
 
@@ -20,7 +23,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    [self fetchPosts];
 }
+
+- (void)fetchPosts {
+    // construct PFQuery
+    PFQuery *postQuery = [PFQuery queryWithClassName:@"Instagram_Posts"];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    [postQuery includeKey:@"text"];
+    [postQuery includeKey:@"image"];
+    postQuery.limit = 20;
+
+    // fetch data asynchronously
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if (posts) {
+            self.arrayOfPosts = posts;
+            NSLog(@"%@", self.arrayOfPosts);
+        }
+        else {
+            NSLog(@"Error querying for data %@", error.localizedDescription);
+        }
+    }];
+    
+}
+
 - (IBAction)didTapLogout:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         if(error != nil){
@@ -35,6 +66,26 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     appDelegate.window.rootViewController = loginViewController;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.arrayOfPosts.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
+    Post *post = self.arrayOfPosts[indexPath.row];
+  
+    
+    
+    cell.postTextLabel.text = post[@"text"];
+    
+    
+    
+//    cell.postTextLabel = post.caption;
+    
+    return cell;
+    
 }
 
 /*

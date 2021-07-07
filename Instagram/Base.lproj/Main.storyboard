@@ -120,6 +120,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="insta_camera_btn" id="Emh-Yw-OLX">
                             <color key="tintColor" name="AccentColor"/>
+                            <connections>
+                                <segue destination="df7-9K-D2Q" kind="presentation" id="pJU-Zj-0V6"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -130,10 +133,66 @@
             </objects>
             <point key="canvasLocation" x="1853.6231884057972" y="69.642857142857139"/>
         </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="6YE-cx-bir">
+            <objects>
+                <viewController id="geS-mU-K7x" customClass="ComposeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f1W-vY-vTO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lzW-Fr-C9W">
+                                <rect key="frame" x="0.0" y="56" width="175" height="189"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                </accessibility>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ljG-9O-KMf" appends="YES" id="uaN-dU-Lrh"/>
+                                </connections>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write a caption..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UJ5-RD-ahW">
+                                <rect key="frame" x="183" y="74" width="211" height="171"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LsU-EQ-xrV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Dwo-DB-L5C">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Y1b-6b-Jrq">
+                            <connections>
+                                <action selector="didTapCancel:" destination="geS-mU-K7x" id="mqk-Vf-efC"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="oaE-HS-CkB">
+                            <connections>
+                                <action selector="didTapShare:" destination="geS-mU-K7x" id="ZZy-Ao-rPb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="lzW-Fr-C9W" id="GkH-i3-AsM"/>
+                        <outlet property="postTextField" destination="UJ5-RD-ahW" id="iwf-nG-kLF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q2U-vz-voC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ljG-9O-KMf">
+                    <connections>
+                        <action selector="didTapImage:" destination="geS-mU-K7x" id="f02-9n-BqO"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="4062.3188405797105" y="69.642857142857139"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ung-Xr-cbU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="sva-gv-ofR" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FeedViewController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="sva-gv-ofR" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Swo-0P-0tP">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -148,12 +207,33 @@
             </objects>
             <point key="canvasLocation" x="912" y="70"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ROg-7t-wVs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="df7-9K-D2Q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ove-s5-MJp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="geS-mU-K7x" kind="relationship" relationship="rootViewController" id="hN6-rv-JXy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0mP-G3-iFS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3150.7246376811595" y="69.642857142857139"/>
+        </scene>
     </scenes>
     <resources>
         <image name="insta_camera_btn" width="25" height="25"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
