@@ -9,7 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol ComposeViewControllerDelegate
+
+- (void)didPost;
+
+@end
+
 @interface ComposeViewController : UIViewController
+
+@property (weak, nonatomic) id<ComposeViewControllerDelegate> delegate;
 
 @end
 

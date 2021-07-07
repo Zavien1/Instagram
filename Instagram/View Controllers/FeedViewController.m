@@ -9,12 +9,16 @@
 #import "Parse/Parse.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "UIImageView+AFNetworking.h"
 #import "PostCell.h"
 #import "Post.h"
+#import "DetailsViewController.h"
+#import "ComposeViewController.h"
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray* arrayOfPosts;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -26,7 +30,12 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+
     [self fetchPosts];
 }
 
@@ -43,7 +52,8 @@
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
             self.arrayOfPosts = posts;
-            NSLog(@"%@", self.arrayOfPosts);
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
         }
         else {
             NSLog(@"Error querying for data %@", error.localizedDescription);
@@ -73,29 +83,40 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
     Post *post = self.arrayOfPosts[indexPath.row];
-  
-    
     
     cell.postTextLabel.text = post[@"text"];
     
-    
-    
-//    cell.postTextLabel = post.caption;
+    //Displaying image
+    PFFileObject *image = post[@"image"];
+    [cell.postImage setImageWithURL:[NSURL URLWithString:image.url]];
     
     return cell;
     
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqual:@"detailsView"]){
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Post *post = self.arrayOfPosts[indexPath.row];
+        DetailsViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.post = post;
+    }
+    else if([segue.identifier isEqual:@"composeView"]){
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeViewController = (ComposeViewController*)navigationController.topViewController;
+        composeViewController.delegate = self;
+    }
+    
 }
-*/
+
 
 @end
