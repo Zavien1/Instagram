@@ -66,6 +66,7 @@
     [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded){
             [self dismissViewControllerAnimated:YES completion:nil];
+            [self.delegate didPost];
         }
         else{
             NSLog(@"Error posting picture %@", error.localizedDescription);
