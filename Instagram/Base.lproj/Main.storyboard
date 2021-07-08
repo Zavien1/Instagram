@@ -220,7 +220,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UO5-g4-RM2">
-                                <rect key="frame" x="20" y="501" width="374" height="21"/>
+                                <rect key="frame" x="20" y="501" width="91" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -231,19 +231,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xr6-fG-4Zi">
+                                <rect key="frame" x="352" y="501" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="T4e-Ue-vmp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="T4e-Ue-vmp" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="BTt-2V-EUd" secondAttribute="bottom" constant="10" id="JEd-sV-edZ"/>
-                            <constraint firstItem="T4e-Ue-vmp" firstAttribute="trailing" secondItem="UO5-g4-RM2" secondAttribute="trailing" constant="20" id="NDA-0R-q4R"/>
                             <constraint firstItem="UO5-g4-RM2" firstAttribute="leading" secondItem="T4e-Ue-vmp" secondAttribute="leading" constant="20" id="PRq-FY-XJN"/>
                             <constraint firstItem="5Ny-w8-4OS" firstAttribute="top" secondItem="T4e-Ue-vmp" secondAttribute="top" id="R2p-fc-d6r"/>
                             <constraint firstItem="T4e-Ue-vmp" firstAttribute="trailing" secondItem="BTt-2V-EUd" secondAttribute="trailing" constant="20" id="XNs-YX-EE4"/>
+                            <constraint firstItem="T4e-Ue-vmp" firstAttribute="trailing" secondItem="xr6-fG-4Zi" secondAttribute="trailing" constant="20" id="Xp7-LR-pe9"/>
                             <constraint firstItem="UO5-g4-RM2" firstAttribute="top" secondItem="5Ny-w8-4OS" secondAttribute="bottom" constant="15" id="cox-Lm-arK"/>
                             <constraint firstItem="BTt-2V-EUd" firstAttribute="leading" secondItem="UO5-g4-RM2" secondAttribute="leading" id="djK-T0-0a6"/>
                             <constraint firstItem="BTt-2V-EUd" firstAttribute="top" secondItem="UO5-g4-RM2" secondAttribute="bottom" constant="15" id="eSI-xJ-Kvj"/>
                             <constraint firstItem="5Ny-w8-4OS" firstAttribute="leading" secondItem="T4e-Ue-vmp" secondAttribute="leading" id="g9I-pp-jSR"/>
+                            <constraint firstItem="xr6-fG-4Zi" firstAttribute="top" secondItem="UO5-g4-RM2" secondAttribute="top" id="o5o-Xh-WMN"/>
+                            <constraint firstItem="xr6-fG-4Zi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UO5-g4-RM2" secondAttribute="trailing" constant="20" id="tMx-B5-E20"/>
                             <constraint firstItem="5Ny-w8-4OS" firstAttribute="trailing" secondItem="T4e-Ue-vmp" secondAttribute="trailing" id="u6b-3t-j7e"/>
                         </constraints>
                     </view>
@@ -251,6 +259,7 @@
                     <connections>
                         <outlet property="postImage" destination="5Ny-w8-4OS" id="xFq-zQ-EsI"/>
                         <outlet property="postTextLabel" destination="BTt-2V-EUd" id="Y3D-ax-nU6"/>
+                        <outlet property="postTimeLabel" destination="xr6-fG-4Zi" id="hfN-KS-Cp6"/>
                         <outlet property="postUserLabel" destination="UO5-g4-RM2" id="fCq-U2-JOx"/>
                     </connections>
                 </viewController>
