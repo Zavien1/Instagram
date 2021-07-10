@@ -11,6 +11,8 @@
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
 
 @end
 
@@ -20,6 +22,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //style login button
+    self.loginButton.layer.cornerRadius = 8;
+    
+    //style sign up button
+    self.signUpButton.layer.cornerRadius = 8;
+    self.signUpButton.layer.borderWidth = 1;
+    self.signUpButton.layer.borderColor = [UIColor systemGrayColor].CGColor;
 }
 - (IBAction)didTapLogin:(id)sender {
     [self loginUser];

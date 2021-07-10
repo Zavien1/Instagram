@@ -43,25 +43,24 @@
     // construct PFQuery
     PFQuery *postQuery = [PFQuery queryWithClassName:@"Instagram_Posts"];
     [postQuery orderByDescending:@"createdAt"];
-    [postQuery includeKey:@"author"];
+    [postQuery includeKey:@"user"];
     [postQuery includeKey:@"text"];
     [postQuery includeKey:@"image"];
     [postQuery includeKey:@"likes"];
-    [postQuery includeKey:@"users_who_liked"];
+    [postQuery includeKey:@"usersLiked"];
     postQuery.limit = 20;
 
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
-        if (posts) {
+        if(posts){
             self.arrayOfPosts = posts;
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
         }
-        else {
+        else{
             NSLog(@"Error querying for data %@", error.localizedDescription);
         }
     }];
-    
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -100,7 +99,6 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row + 1 == [self.arrayOfPosts count]){
-//        NSNumber *newPosts = [NSNumber numberwithInt:[self.arrayOfPosts intValue]]
         [self fetchPosts];
     }
 }

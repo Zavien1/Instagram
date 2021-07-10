@@ -11,7 +11,8 @@
 		1306C5D92695016D005E09E1 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1306C5D82695016D005E09E1 /* PostCell.m */; };
 		131936052696359E00673C48 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 131936042696359E00673C48 /* Post.m */; };
 		131936082696668900673C48 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131936072696668900673C48 /* DetailsViewController.m */; };
-		1319360B2697AAA400673C48 /* LikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1319360A2697AAA400673C48 /* LikesViewController.m */; };
+		1319360E2698FFBF00673C48 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1319360D2698FFBF00673C48 /* ProfileViewController.m */; };
+		13193613269903FB00673C48 /* PostCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13193612269903FB00673C48 /* PostCollectionCell.m */; };
 		13AB588F2694E7890045A098 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13AB588E2694E7890045A098 /* AppDelegate.m */; };
 		13AB58922694E7890045A098 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13AB58912694E7890045A098 /* SceneDelegate.m */; };
 		13AB58982694E7890045A098 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13AB58962694E7890045A098 /* Main.storyboard */; };
@@ -52,8 +53,10 @@
 		131936042696359E00673C48 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		131936062696668900673C48 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		131936072696668900673C48 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
-		131936092697AAA400673C48 /* LikesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LikesViewController.h; sourceTree = "<group>"; };
-		1319360A2697AAA400673C48 /* LikesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LikesViewController.m; sourceTree = "<group>"; };
+		1319360C2698FFBF00673C48 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		1319360D2698FFBF00673C48 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		13193611269903FB00673C48 /* PostCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCollectionCell.h; sourceTree = "<group>"; };
+		13193612269903FB00673C48 /* PostCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCollectionCell.m; sourceTree = "<group>"; };
 		13AB588A2694E7890045A098 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13AB588D2694E7890045A098 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		13AB588E2694E7890045A098 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -138,8 +141,8 @@
 				13DA5C6A26950A2D00A5BAD2 /* ComposeViewController.m */,
 				131936062696668900673C48 /* DetailsViewController.h */,
 				131936072696668900673C48 /* DetailsViewController.m */,
-				131936092697AAA400673C48 /* LikesViewController.h */,
-				1319360A2697AAA400673C48 /* LikesViewController.m */,
+				1319360C2698FFBF00673C48 /* ProfileViewController.h */,
+				1319360D2698FFBF00673C48 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -149,6 +152,8 @@
 			children = (
 				1306C5D72695016D005E09E1 /* PostCell.h */,
 				1306C5D82695016D005E09E1 /* PostCell.m */,
+				13193611269903FB00673C48 /* PostCollectionCell.h */,
+				13193612269903FB00673C48 /* PostCollectionCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -473,9 +478,10 @@
 				13AB588F2694E7890045A098 /* AppDelegate.m in Sources */,
 				13AB58A02694E78A0045A098 /* main.m in Sources */,
 				13DA5C6B26950A2D00A5BAD2 /* ComposeViewController.m in Sources */,
-				1319360B2697AAA400673C48 /* LikesViewController.m in Sources */,
 				13AB58922694E7890045A098 /* SceneDelegate.m in Sources */,
 				131936082696668900673C48 /* DetailsViewController.m in Sources */,
+				1319360E2698FFBF00673C48 /* ProfileViewController.m in Sources */,
+				13193613269903FB00673C48 /* PostCollectionCell.m in Sources */,
 				1306C5D92695016D005E09E1 /* PostCell.m in Sources */,
 				131936052696359E00673C48 /* Post.m in Sources */,
 			);

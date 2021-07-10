@@ -29,7 +29,8 @@
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {
         if(posts != nil){
             Post *queriedPost = posts[0];
-            NSMutableArray *usersWhoLiked = queriedPost[@"users_who_liked"];
+            NSMutableArray *usersWhoLiked = queriedPost[@"usersLiked"];
+            Post *receivedPost = [Post new];
             
             if([usersWhoLiked containsObject:[PFUser currentUser].username]) {
                 NSNumber *numberOfLikes = queriedPost[@"likes"];
@@ -37,7 +38,7 @@
                 queriedPost[@"likes"] = newLikes;
                 
                 [usersWhoLiked removeObject:[PFUser currentUser].username];
-                queriedPost[@"users_who_liked"] = usersWhoLiked;
+                queriedPost[@"usersLiked"] = usersWhoLiked;
                 
                 [self.likeButton setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
                 
@@ -48,7 +49,7 @@
                 queriedPost[@"likes"] = newLikes;
                 
                 [usersWhoLiked addObject:[PFUser currentUser].username];
-                queriedPost[@"users_who_liked"] = usersWhoLiked;
+                queriedPost[@"usersLiked"] = usersWhoLiked;
                 [self.likeButton setImage:[UIImage imageNamed:@"favor-icon-1"] forState:UIControlStateNormal];
             }
             
@@ -70,7 +71,7 @@
 - (void)generateCell:(Post *)post {
     self.post = post;
     PFUser *user = post[@"user"];
-//    self.postUserLabel.text = user.username;
+    self.postUserLabel.text = user.username;
     self.postTextLabel.text = post[@"text"];
     self.postTimeLabel.text = [post createdAt].shortTimeAgoSinceNow;
     
@@ -82,7 +83,7 @@
     }
     
     //check if user already liked post on load so that like button is highlighted
-    if([post[@"users_who_liked"] containsObject:[PFUser currentUser].username]){
+    if([post[@"usersLiked"] containsObject:[PFUser currentUser].username]){
         [self.likeButton setImage:[UIImage imageNamed:@"favor-icon-1"] forState:UIControlStateNormal];
     }
     else{

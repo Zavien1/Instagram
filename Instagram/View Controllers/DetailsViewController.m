@@ -22,6 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //set details text
+    PFUser *user = self.post[@"user"];
+    self.postUserLabel.text = user.username;
     self.postTextLabel.text = self.post[@"text"];
     self.postTimeLabel.text = [self.post createdAt].shortTimeAgoSinceNow;
     
